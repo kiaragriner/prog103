@@ -15,25 +15,44 @@ dna2 <- "attattaggaacaca"
 # Use them to print whether or not the following statements are TRUE or FALSE.
 #
 # w is greater than 10
+w > 10
+true
 # "green" is in colors
+"green" %in% colors
+true
 # x is greater than y
+x > y
+#false
 # Each value in masses is greater than 40.
+c(w, x, y, z) >40
+#all false
 # 2 * x + 0.2 is equal to y
+2*x+0.2 ==y
+#false
 # dna1 is the same as dna2
+dna1==dna2
+#false
 # dna1 is not the same as dna2
+dna1 !=dna2
+#true
 # w is greater than x, or y is greater than z
+w>x | y>z
+#true
 # x times w is between 13.2 and 13.5
+x*w > 13.2 & x*w < 13.5
+#true
 # Each mass in masses is between 30 and 50.
-
-
+c(w, x, y, z) > 30 &
+  c(w, x, y, z) < 50
+#all false
 # Making choices with if, else, and else if -------------------------------
 
 # 1. Complete the following if statement so that if age_class is equal to “egg”
 # it sets y <- 10.
 
 age_class = "egg"
-if () {
-
+if (age_class == "egg") {
+print(y <- 10)
 }
 y
 
@@ -41,26 +60,37 @@ y
 # it sets y <- 10 and if age_class is equal to “larva” it sets y <- 5.
 
 age_class = "larva"
-if () {
-
+if (age_class == "larva") {
+print(y <-10)
+} else if (age_class == "larva"){}
+ print(y <- 10)
 }
-y
-
 # 3. Complete the following if statement so that if age_class is equal to “egg”
 # it sets y <- 10 and if age_class is equal to “larva” it sets y <- 5 and if
 # age_class is something else then it sets the value of y <- 0.
 
 age_class = "adult"
-if () {
-
+if (age_class == "egg") {
+print(y <- 10)
+} else if (age_class == "larva")
+print (y <- 5)
+} else {
+  print (y <- 0)
 }
-y
-
 # 4. Convert your if/else if/ else statement from (3) into a function that takes
 # age_class as an argument and returns y. Call this function 4 times, once with
 # each of the following values for age_class: “egg”, “larva”, “adult”,
 # “senescent”.
-
+age_class <- function(stage){
+  if (stage == "egg"){
+    y <- 10
+  } else if (stage == "larva"){
+    y <- 5
+  } else {
+    y <- 0
+  }
+  return (y)
+}
 
 # Repeating yourself with vectorized functions ----------------------------
 
@@ -68,15 +98,15 @@ y
 # just their first and last characters. Verify it works on the names of sharks
 # below.
 sharks <- c("thresher", "mako", "tiger", "hammerhead")
-shorten_string <- function(???) {
-  first_letter <- substr(???, 1, 1)
+shorten_string <- function(shark_name) {
+  first_letter <- substr(shark_name, 1, 1)
   # Hint: nchar() returns the number of characters in a string
-  last_letter <- substr(???, nchar(???), nchar(???))
+  last_letter <- substr(shark_name, nchar(shark_name), nchar(shark_name))
   result <- paste(first_letter, last_letter, sep = "")
   return(result)
 }
 shorten_string(sharks)
-
+# it says "tr" "mo" "tr" "hd"
 # Fisheries scientists frequently need to estimate the mass of a fish from a
 # different body dimension that's easier to measure. Commonly, they use the
 # "fork length" of the fish, which extends to where the tail forks in two. The
@@ -85,9 +115,10 @@ shorten_string(sharks)
 
 # 2. a and b for a shortfin mako are estimated to be 5.243e-6 and 3.141. What
 # are the estimated masses of sharks that are 100, 200, and 300 cm long?
-a <- ???
-b <- ???
-??? * c(???)^???
+a <- 5.243e-6
+b <- 3.141
+M = a * c(100)^b
+# i got 10.036
 
 # 3. Write a function called shortfin_mako_mass_kg that takes a parameter L_cm
 # and returns the estimated masses of shortfin makos with fork lengths L_cm. Use
@@ -101,20 +132,21 @@ b <- ???
 
 numbers <- c(1, 2, 3, 4, 5)
 for (number in numbers) {
-  print(number)
+  print(number * 3)
 }
-
+# it worked 3, 6, 9, 12, 15
 # 2. Write a for loop that loops over the following vector and prints out the
 # mass in kilograms (mass_kg = 2.2 * mass_lb)
 
 mass_lbs <- c(2.2, 3.5, 9.6, 1.2)
+ print (mass_kg = 2.2 * mass_lbs)
 
 # 3. Complete the code below so that it prints out the name of each bird one
 # line at a time.
 
 birds = c("albatross", "puffin", "pelican", "penguin")
-for (i in 1:length(???)) {
-  print(birds[???])
+for (i in 1:length(birds)) {
+  print(birds[for])
 }
 
 # 4. Complete the code below so that it stores one area for each radius.
